@@ -1,1 +1,16 @@
-The content of this file needs to be copied to the file into the server where you are going to perform the action on the file named "hosts" located on /etc/ansible/
+#hosts for co_prod_dc1
+all:
+  children:
+    co_prod_ipa:
+      hosts:
+        rc10e00vm205:
+    co_prod:
+      hosts:
+        rc10e00h20[1:9]:
+        rc10e00h211:
+        rc10e00h21[3:4]:
+        rc10e00h216:
+        rc10e00vm20[1:4]a:
+        rc10e00vm20[1:4]b:
+        rc10e00vm20[1:4]c:
+        rc10e00vm20[1:4]d:

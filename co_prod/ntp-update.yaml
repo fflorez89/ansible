@@ -1,0 +1,21 @@
+#run command: 
+# ansible-playbook --user ntp-update.yaml --ask-pass
+
+- hosts: co_Prod
+  gather_facts: true
+  vars:
+    ntp_servers:
+      rc10e00vm205.cot.customers.qvantel.net
+
+  tasks:
+    - name: Synchronize NTP against FreeIPA server
+      become: true 
+      shell: |
+        systemctl start ntpd.service
+        ntpdate -u {{ ntp_servers }}
+        systemctl start ntpd.service
+      register: Sync_ntp_FreeIPA
+
+    - name: Print Sync Result
+      debug:
+        var: Sync_ntp_FreeIPA.stdout

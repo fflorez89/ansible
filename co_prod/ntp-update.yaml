@@ -1,7 +1,7 @@
 #run command: 
-# ansible-playbook ntp-update.yaml --user --ask-pass
+# ansible-playbook --user ntp_update.yaml --ask-pass
 
-- hosts: co_Prod
+- hosts: co_prod
   gather_facts: true
   vars:
     ntp_servers:
